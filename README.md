@@ -131,6 +131,64 @@ vector<vector<int>> vec(5, vector<int>(2, 10)); // Declares vector of vectors(he
 - `*min_element(v.begin(), v.end());` Returns the minimum element from the vector (TC - 𝓞(n))
 - `*max_element(v.begin(), v.end());` Returns the maximum element from the vector (TC - 𝓞(n))
 
+- Usage of max_element by @Omesharm
+```
+#include <iostream>
+#include <vector>
+#include <algorithm>  // For std::max_element
+#include <iterator>   // For std::distance
+
+int main() {
+    // Create a vector with some elements
+    std::vector<int> vec = {10, 20, 35, 7, 15, 40};
+
+    // Find the maximum element using std::max_element
+    std::vector<int>::iterator maxIt = std::max_element(vec.begin(), vec.end());
+
+    // 1. Using maxIt != vec.end() (standard way)
+    if (maxIt != vec.end()) {
+        std::cout << "Method 1: Maximum element is: " << *maxIt << std::endl;
+    } else {
+        std::cout << "Method 1: The vector is empty." << std::endl;
+    }
+
+    // 2. Using !(maxIt == vec.end()) (alternative negation check)
+    if (!(maxIt == vec.end())) {
+        std::cout << "Method 2: Maximum element is: " << *maxIt << std::endl;
+    } else {
+        std::cout << "Method 2: The vector is empty." << std::endl;
+    }
+
+    // 3. Using std::distance() to check if the iterator is valid
+    if (std::distance(vec.begin(), maxIt) < vec.size()) {
+        std::cout << "Method 3: Maximum element is: " << *maxIt << std::endl;
+    } else {
+        std::cout << "Method 3: The vector is empty." << std::endl;
+    }
+
+    // 4. Using a try-catch block (not common, but shown for completeness)
+    try {
+        if (maxIt == vec.end()) {
+            throw std::out_of_range("Iterator out of range");
+        } else {
+            std::cout << "Method 4: Maximum element is: " << *maxIt << std::endl;
+        }
+    } catch (const std::out_of_range& e) {
+        std::cout << "Method 4: The vector is empty." << std::endl;
+    }
+
+    // 5. Using vec.empty() to check if the vector is empty before calling max_element
+    if (!vec.empty()) {
+        std::cout << "Method 5: Maximum element is: " << *maxIt << std::endl;
+    } else {
+        std::cout << "Method 5: The vector is empty." << std::endl;
+    }
+
+    return 0;
+}
+
+```
+
 *Note: The difference between `v[i]` and `v.at(i)` is that 'at' will raise an exception if you try to access an element outside the vector while the `[]` operator won't.*
 
 
