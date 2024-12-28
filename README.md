@@ -603,7 +603,53 @@ int main() {
     return 0;
 }
 ```
+```
+#include <iostream>
+#include <set>
+#include <algorithm>  // For std::for_each and std::copy
+#include <iterator>   // For std::ostream_iterator
 
+int main() {
+    // Create a set with some elements
+    std::set<int> mySet = {10, 20, 30, 40, 50};
+
+    // 1. Using Iterators
+    std::cout << "1. Using Iterators:\n";
+    for (std::set<int>::iterator it = mySet.begin(); it != mySet.end(); ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << "\n\n";
+
+    // 2. Using Range-Based For Loop
+    std::cout << "2. Using Range-Based For Loop:\n";
+    for (const int& value : mySet) {
+        std::cout << value << " ";
+    }
+    std::cout << "\n\n";
+
+    // 3. Using std::for_each and Lambda Function
+    std::cout << "3. Using std::for_each and Lambda Function:\n";
+    std::for_each(mySet.begin(), mySet.end(), [](const int& value) {
+        std::cout << value << " ";
+    });
+    std::cout << "\n\n";
+
+    // 4. Using Reverse Iterators
+    std::cout << "4. Using Reverse Iterators:\n";
+    for (std::set<int>::reverse_iterator rit = mySet.rbegin(); rit != mySet.rend(); ++rit) {
+        std::cout << *rit << " ";
+    }
+    std::cout << "\n\n";
+
+    // 5. Using std::copy with std::ostream_iterator
+    std::cout << "5. Using std::copy with std::ostream_iterator:\n";
+    std::copy(mySet.begin(), mySet.end(), std::ostream_iterator<int>(std::cout, " "));
+    std::cout << "\n";
+
+    return 0;
+}
+
+```
 ---
 
 # Unordered Set in C++
