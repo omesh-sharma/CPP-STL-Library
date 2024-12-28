@@ -457,6 +457,15 @@ priority_queue<int, vector<int>, greater<int>> q; // min priority_queue of int's
 priority_queue<string, vector<string>, greater<string>> q; // min priority_queue of strings
 priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q; // min priority_queue of pairs
 priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> q; // min priority_queue of vectors
+
+Explanation:
+std::priority_queue<int, std::vector<int>, std::greater<int>>: This defines a priority queue of type int where the container is std::vector<int> and the comparison function is std::greater<int>, which orders the elements in ascending order (i.e., a Min Priority Queue).
+
+pq.push(x): Adds an element x to the priority queue.
+
+pq.top(): Accesses the top element of the priority queue, which is the smallest element in a Min Priority Queue.
+
+pq.pop(): Removes the top element from the priority queue.
 ```
 
 *Note: Similar syntax for `char`, `long long int`, `float`, `double`, `long double`, and some other data types, including user-defined data types.*
